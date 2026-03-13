@@ -17,14 +17,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("=== Homework 4 Demo: Bridge + Composite ===\n");
 
-        // TODO:
+
         //build leaves
         HeroUnit warrior = new HeroUnit("Arthas", 140, 30);
         HeroUnit mage = new HeroUnit("Jaina", 90, 40);
         EnemyUnit goblin = new EnemyUnit("Goblin", 70, 20);
         EnemyUnit orc = new EnemyUnit("Orc", 120, 25);
 
-        // TODO: build composite hierarchy (nested)
+
         PartyComposite heroes = new PartyComposite("Heroes");
         heroes.add(warrior);
         heroes.add(mage);
@@ -40,7 +40,7 @@ public class Main {
         heroes.printTree("");
         enemies.printTree("");
 
-        // TODO: Bridge combinations
+
         Skill slashFire = new SingleTargetSkill("Slash", 20, new FireEffect());
         Skill slashIce = new SingleTargetSkill("Slash", 20, new IceEffect());
         Skill stormFire = new AreaSkill("Storm", 15, new FireEffect());
@@ -50,7 +50,7 @@ public class Main {
         System.out.println(slashIce.getSkillName() + " using " + slashIce.getEffectName());
         System.out.println(stormFire.getSkillName() + " using " + stormFire.getEffectName());
 
-        // TODO: run raid
+
         RaidEngine engine = new RaidEngine().setRandomSeed(42L);
         RaidResult result = engine.runRaid(heroes, enemies, slashFire, stormFire);
 
