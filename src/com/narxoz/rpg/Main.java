@@ -17,7 +17,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("=== Homework 4 Demo: Bridge + Composite ===\n");
 
-        // TODO: build leaves
+        // TODO:
+        //build leaves
         HeroUnit warrior = new HeroUnit("Arthas", 140, 30);
         HeroUnit mage = new HeroUnit("Jaina", 90, 40);
         EnemyUnit goblin = new EnemyUnit("Goblin", 70, 20);
