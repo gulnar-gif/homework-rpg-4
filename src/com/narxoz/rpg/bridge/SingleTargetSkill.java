@@ -12,7 +12,30 @@ public class SingleTargetSkill extends Skill {
         if (target == null || !target.isAlive()) {
             return;
         }
-        int damage = resolvedDamage();
-        target.takeDamage(damage);
+
+        CombatNode actualTarget = findFirstAliveLeaf(target);
+        if (actualTarget != null) {
+            int damage = resolvedDamage();
+            actualTarget.takeDamage(damage);
+        }
+    }
+
+    private CombatNode findFirstAliveLeaf(CombatNode node) {
+        if (node == null || !node.isAlive()) {
+            return null;
+        }
+
+        if (node.getChildren().isEmpty()) {
+            return node;
+        }
+
+        for (CombatNode child : node.getChildren()) {
+            CombatNode found = findFirstAliveLeaf(child);
+            if (found != null) {
+                return found;
+            }
+        }
+
+        return null;
     }
 }
