@@ -1,0 +1,56 @@
+@startuml
+interface EffectImplementor {
+  +computeDamage(basePower : int) : int
+  +getEffectName() : String
+}
+
+class FireEffect {
+  +computeDamage(basePower : int) : int
+  +getEffectName() : String
+}
+
+class IceEffect {
+  +computeDamage(basePower : int) : int
+  +getEffectName() : String
+}
+
+class PhysicalEffect {
+  +computeDamage(basePower : int) : int
+  +getEffectName() : String
+}
+
+class ShadowEffect {
+  +computeDamage(basePower : int) : int
+  +getEffectName() : String
+}
+
+abstract class Skill {
+  -skillName : String
+  -basePower : int
+  -effect : EffectImplementor
+  +getSkillName() : String
+  +getBasePower() : int
+  +getEffectName() : String
+  #resolvedDamage() : int
+  +cast(target : CombatNode) : void
+}
+
+class SingleTargetSkill {
+  +cast(target : CombatNode) : void
+}
+
+class AreaSkill {
+  +cast(target : CombatNode) : void
+}
+
+EffectImplementor <|.. FireEffect
+EffectImplementor <|.. IceEffect
+EffectImplementor <|.. PhysicalEffect
+EffectImplementor <|.. ShadowEffect
+
+Skill <|-- SingleTargetSkill
+Skill <|-- AreaSkill
+
+Skill --> EffectImplementor
+Skill ..> CombatNode
+@enduml
